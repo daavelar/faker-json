@@ -1,0 +1,30 @@
+{
+  "name": "daavelar/faker-json",
+  "autoload": {
+    "psr-4": {
+      "Daavelar\\FakerJson\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Diego Avelar",
+      "email": "diego.avelar@olist.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^11.2"
+  },
+  "require": {
+    "fakerphp/faker": "^1.23",
+    "ext-json": "*",
+    "illuminate/support": "^11.10"
+  }
+}

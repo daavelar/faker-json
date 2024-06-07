@@ -1,0 +1,37 @@
+{
+  "number": "uuid",
+  "shipping_type": "enum(CIF, FOB)",
+  "store": "enum(store1, store2)",
+  "invoice": {
+    "value": "randomFloat(2, 100, 200)",
+    "serie": "randomDigit",
+    "number": "numerify(9)",
+    "access_key": "numerify(44)",
+    "has_insurance": "boolean",
+    "issued_at": "dateTimeThisYear"
+  },
+  "delivery": {
+    "address": {
+      "street": "streetName",
+      "number": "buildingNumber",
+      "neighborhood": "citySuffix",
+      "city": "city",
+      "state": "stateAbbr",
+      "zipcode": "postcode"
+    },
+    "contact": {
+      "name": "companyName",
+      "phone": "phoneNumber",
+      "document_number": "numerify(11)"
+    }
+  },
+  "packages": [
+    {
+      "code": "uuid(v4)",
+      "weight": "randomFloat(1, 10, 20)",
+      "quantity": "numerify(1, 10)",
+      "volume_type_code": "enum(BOX, ENVELOPE, TUBE)",
+      "icms_applied": "boolean"
+    }
+  ]
+}
