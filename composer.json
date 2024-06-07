@@ -25,6 +25,6 @@
   "require": {
     "fakerphp/faker": "^1.23",
     "ext-json": "*",
-    "illuminate/support": "^11.10"
+    "illuminate/support": "^10.0.0"
   }
 }
