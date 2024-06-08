@@ -1,5 +1,3 @@
-Of course, I can provide instructions in English for anyone who wants to contribute via GitHub. Here are the steps:
-
 1. **Fork the Repository**: First, you need to fork the repository. This creates a copy of the repository in your GitHub account. You can do this by clicking on the "Fork" button in the top right corner of the repository page.
 
 2. **Clone the Repository**: After forking, you need to clone the repository to your local machine. You can do this using the `git clone` command. For example:
