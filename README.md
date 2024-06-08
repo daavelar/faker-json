@@ -1,3 +1,5 @@
+![example workflow](https://github.com/<OWNER>/<REPO>/actions/workflows/<WORKFLOW_FILE>/badge.svg)
+
 # Faker Json
 
 Faker Json is a library in PHP that uses the Faker library to generate valid JSONs from templates with variables.
