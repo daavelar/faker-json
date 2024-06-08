@@ -42,6 +42,13 @@ class FakerJson
             }
             if (str($item)->startsWith('randomFloat')) {
                 $args = explode(',', str_replace('randomFloat(', '', str_replace(')', '', $item)));
+                if (count($args) == 1) {
+                    $args[1] = 0;
+                    $args[2] = 100;
+                }
+                if (count($args) == 2) {
+                    $args[2] = 100;
+                }
                 $item = $this->fake->randomFloat($args[0], $args[1], $args[2]);
             }
             if (str($item)->startsWith('numberBetween')) {
