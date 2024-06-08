@@ -61,6 +61,9 @@ class FakerJson
             if (str($item)->startsWith('dateTimeThisYear')) {
                 $item = $this->fake->dateTimeThisYear()->format('Y-m-d\TH:i:s.uP');
             }
+            if (str($item)->startsWith('date')) {
+                $item = $this->fake->date();
+            }
             if (str($item)->startsWith('streetName')) {
                 $item = $this->fake->streetName();
             }

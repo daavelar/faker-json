@@ -5,10 +5,10 @@
   "invoice": {
     "value": "randomFloat(2, 100, 200)",
     "serie": "randomDigit",
-    "number": "numerify(9)",
-    "access_key": "numerify(44)",
+    "number": "numerify(#########)",
+    "access_key": "numerify(############################################)",
     "has_insurance": "boolean",
-    "issued_at": "dateTimeThisYear"
+    "issued_at": "date"
   },
   "delivery": {
     "address": {
@@ -22,7 +22,7 @@
     "contact": {
       "name": "companyName",
       "phone": "phoneNumber",
-      "document_number": "numerify(11)"
+      "document_number": "numerify(###########)"
     }
   },
   "packages": [
