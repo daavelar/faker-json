@@ -19,15 +19,27 @@ $faker = Factory::create();
 $fakerJson = new FakerJson($faker);
 
 $template = '{
-    "name": "${name}",
-    "email": "${email}",
-    "address": "${address}",
-    "phone": "${phoneNumber}",
-    "date": "${date}",
-    "time": "${time}",
+    "name": "firstName",
+    "email": "email",
+    "phone": "phoneNumber",
+    "age": "numberBetween(18, 65)"
+    "company": {
+        "name": "companyName",
+        "address": "streetAddress",
+        "bs": "buildingNumber"
+    }
 }';
 
 $json = $fakerJson->generate($template);
 
 echo $json;
 ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
