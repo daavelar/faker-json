@@ -15,7 +15,6 @@ composer require daavelar/faker-json
 use Faker\Factory;
 use FakerJson\FakerJson;
 
-$faker = Factory::create();
 $fakerJson = new FakerJson($faker);
 
 $template = '{
