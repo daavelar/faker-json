@@ -2,33 +2,30 @@
 
 namespace Daavelar\FakerJson;
 
-use Faker\Factory;
-use Faker\Generator;
-
 class FakerJson
 {
-    private Generator $fake;
+    private $fake;
 
-    public function __construct($locale = 'en')
+    public function __construct($fakerGenerator)
     {
-        $this->fake = Factory::create($locale);
+        $this->fake = $fakerGenerator;
     }
 
-    public function evaluateFile(string $file): string
+    public function compileFile(string $file): string
     {
-        return $this->evaluate(file_get_contents($file));
+        return $this->compile(file_get_contents($file));
     }
 
-    public function evaluate(string $template): string
+    public function compile(string $template): string
     {
         $decodedTemplate = json_decode($template, true);
 
-        array_walk_recursive($decodedTemplate, function (&$item, $key) {
+        array_walk_recursive($decodedTemplate, function (&$item) {
             if (str($item)->startsWith('uuid')) {
                 $item = $this->fake->uuid();
             }
-            if (str($item)->startsWith('enum')) {
-                $itemValues = explode(',', str_replace('enum(', '', str_replace(')', '', $item)));
+            if (str($item)->startsWith('randomElement')) {
+                $itemValues = explode(',', str_replace('randomElement(', '', str_replace(')', '', $item)));
                 $item = $this->fake->randomElement($itemValues);
             }
             if (str($item)->startsWith('lexify')) {
@@ -58,8 +55,8 @@ class FakerJson
             if (str($item)->startsWith('boolean')) {
                 $item = $this->fake->boolean();
             }
-            if (str($item)->startsWith('dateTimeThisYear')) {
-                $item = $this->fake->dateTimeThisYear()->format('Y-m-d\TH:i:s.uP');
+            if (str($item)->startsWith('dateTime')) {
+                $item = $this->fake->dateTime();
             }
             if (str($item)->startsWith('date')) {
                 $item = $this->fake->date();
@@ -93,6 +90,6 @@ class FakerJson
             }
         });
 
-        return json_encode($decodedTemplate, JSON_PRETTY_PRINT);
+        return json_encode($decodedTemplate);
     }
 }

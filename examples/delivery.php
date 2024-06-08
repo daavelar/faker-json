@@ -2,7 +2,9 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Daavelar\FakerJson\FakerGeneratorWrapper;
 use Daavelar\FakerJson\FakerJson;
 
-$fakerJson = new FakerJson('pt_BR');
-echo $fakerJson->evaluateFile(__DIR__ . '/delivery.json');
+$fakerGenerator = new FakerGeneratorWrapper();
+$fakerJson = new FakerJson($fakerGenerator, 'pt_BR');
+echo $fakerJson->compileFile(__DIR__ . '/delivery.json');
