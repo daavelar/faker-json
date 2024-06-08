@@ -7,4 +7,4 @@ use Daavelar\FakerJson\FakerJson;
 
 $fakerGenerator = new FakerGeneratorWrapper();
 $fakerJson = new FakerJson($fakerGenerator, 'pt_BR');
-echo $fakerJson->compileFile(__DIR__ . '/delivery.json');
+echo $fakerJson->generateFile(__DIR__ . '/delivery.json');

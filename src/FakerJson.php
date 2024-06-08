@@ -11,12 +11,12 @@ class FakerJson
         $this->fake = $fakerGenerator;
     }
 
-    public function compileFile(string $file): string
+    public function generateFile(string $file): string
     {
-        return $this->compile(file_get_contents($file));
+        return $this->generate(file_get_contents($file));
     }
 
-    public function compile(string $template): string
+    public function generate(string $template): string
     {
         $decodedTemplate = json_decode($template, true);
 

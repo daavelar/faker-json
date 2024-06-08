@@ -18,7 +18,7 @@ class FakerJsonTest extends TestCase
         $fakerJson = new FakerJson($fakerGeneratorMocked);
 
         $compile = '{"key": "' . $methodCall . '"}';
-        $result = $fakerJson->compile($compile);
+        $result = $fakerJson->generate($compile);
         $expected = '{"key":"' . $value . '"}';
 
         $this->assertEquals($expected, $result);
