@@ -24,7 +24,6 @@ class FakerJsonTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-
     public static function methods()
     {
         return [
