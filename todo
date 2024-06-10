@@ -1,3 +1,4 @@
 [x] translate template
-[] write test
+[x] write tests
 [] create support for all methods
+[] create config

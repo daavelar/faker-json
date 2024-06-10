@@ -34,6 +34,9 @@ class FakerJson
             }
             if(str($item)->startsWith('randomElement')) {
                 $args = explode(',', str_replace('randomElement(', '', str_replace(')', '', $item)));
+
+                $args = array_map('trim', $args);
+
                 $item = $this->fake->randomElement($args);
             }
             if (str($item)->startsWith('lexify')) {

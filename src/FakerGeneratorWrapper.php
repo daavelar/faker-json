@@ -6,98 +6,100 @@ use Faker\Factory;
 
 class FakerGeneratorWrapper
 {
+    private $locale = 'pt_BR';
+
     public function uuid()
     {
-        return Factory::create()->uuid();
+        return Factory::create($this->locale)->uuid();
     }
 
     public function randomElement($array)
     {
-        return Factory::create()->randomElement($array);
+        return Factory::create($this->locale)->randomElement($array);
     }
 
     public function randomDigit()
     {
-        return Factory::create()->randomDigit();
+        return Factory::create($this->locale)->randomDigit();
     }
 
     public function randomFloat($nbMaxDecimals = null, $min = 0, $max = 100)
     {
-        return Factory::create()->randomFloat($nbMaxDecimals, $min, $max);
+        return Factory::create($this->locale)->randomFloat($nbMaxDecimals, $min, $max);
     }
 
     public function numerify($string = '###')
     {
-        return Factory::create()->numerify($string);
+        return Factory::create($this->locale)->numerify($string);
     }
 
     public function lexify($string = '????')
     {
-        return Factory::create()->lexify($string);
+        return Factory::create($this->locale)->lexify($string);
     }
 
     public function numberBetween($min = 1000, $max = 9000)
     {
-        return Factory::create()->numberBetween($min, $max);
+        return Factory::create($this->locale)->numberBetween($min, $max);
     }
 
     public function boolean($chanceOfGettingTrue = 50)
     {
-        return Factory::create()->boolean($chanceOfGettingTrue);
+        return Factory::create($this->locale)->boolean($chanceOfGettingTrue);
     }
 
     public function date($format = 'Y-m-d', $max = 'now')
     {
-        return Factory::create()->date($format, $max);
+        return Factory::create($this->locale)->date($format, $max);
     }
 
     public function dateTime($format = 'Y-m-d H:i:s', $max = 'now')
     {
-        return Factory::create()->dateTime($format, $max);
+        return Factory::create($this->locale)->dateTime($format, $max);
     }
 
     public function streetName()
     {
-        return Factory::create()->streetName();
+        return Factory::create($this->locale)->streetName();
     }
 
     public function buildingNumber()
     {
-        return Factory::create()->buildingNumber();
+        return Factory::create($this->locale)->buildingNumber();
     }
 
     public function citySuffix()
     {
-        return Factory::create()->citySuffix();
+        return Factory::create($this->locale)->citySuffix();
     }
 
     public function city()
     {
-        return Factory::create()->city();
+        return Factory::create($this->locale)->city();
     }
 
     public function stateAbbr()
     {
-        return Factory::create()->stateAbbr();
+        return Factory::create($this->locale)->stateAbbr();
     }
 
     public function postcode()
     {
-        return Factory::create()->postcode();
+        return Factory::create($this->locale)->postcode();
     }
 
     public function firstName()
     {
-        return Factory::create()->firstName();
+        return Factory::create($this->locale)->firstName();
     }
 
     public function phoneNumber()
     {
-        return Factory::create()->phoneNumber();
+        return Factory::create($this->locale)->phoneNumber();
     }
 
     public function word()
     {
-        return Factory::create()->word();
+        return Factory::create($this->locale)->word();
     }
 }
