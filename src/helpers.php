@@ -1,26 +1,22 @@
 <?php
 
-use Faker\Factory;
-
-function tests_path(string $path)
-{
-    return __DIR__ . '/../tests/' . $path;
+if (!function_exists('tests_path')) {
+    function tests_path(string $path)
+    {
+        return __DIR__ . '/../tests/' . $path;
+    }
 }
 
-function dd($string)
-{
-    var_dump($string);
+if (!function_exists('dd')) {
+    function dd($string)
+    {
+        var_dump($string);
 
-    exit;
+        exit;
+    }
 }
 
-if (! function_exists('base_path')) {
-    /**
-     * Get the path to the base of the install.
-     *
-     * @param  string  $path
-     * @return string
-     */
+if (!function_exists('base_path')) {
     function base_path($path = '')
     {
         return __DIR__ . '/../' . $path;
