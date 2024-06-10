@@ -4,13 +4,15 @@ namespace Tests;
 
 use Daavelar\FakerJson\FakerGeneratorWrapper;
 use Daavelar\FakerJson\FakerJson;
+use Daavelar\FakerJson\FakerJsonFormat;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class FakerJsonTest extends TestCase
 {
-    #[DataProvider('methods')]
-    public function test_translation_method_to_fake_data($methodName, $methodCall, $value)
+    #[DataProvider('methods'), Test]
+    public function translation_method_to_fake_data($methodName, $methodCall, $value)
     {
         $fakerGeneratorMocked = $this->createMock(FakerGeneratorWrapper::class);
         $fakerGeneratorMocked->method($methodName)->willReturn($value);
@@ -19,7 +21,7 @@ class FakerJsonTest extends TestCase
 
         $compile = '{"key": "' . $methodCall . '"}';
         $result = $fakerJson->generate($compile);
-        $expected = '{"key":"' . $value . '"}';
+        $expected = ['key' => $value];
 
         $this->assertEquals($expected, $result);
     }
@@ -29,9 +31,12 @@ class FakerJsonTest extends TestCase
         return [
             ['uuid', 'uuid()', '1234'],
             ['randomElement', 'randomElement(1,2,3)', '2'],
+            ['randomElement', 'randomElement(1, 2, 3)', '2'],
             ['lexify', 'lexify(????)', 'abcd'],
             ['numerify', 'numerify(####)', '1234'],
             ['randomDigit', 'randomDigit()', '2'],
+            ['randomFloat', 'randomFloat(1)', '2.5'],
+            ['randomFloat', 'randomFloat(1,2)', '2.5'],
             ['randomFloat', 'randomFloat(1,2,3)', '2.5'],
             ['numberBetween', 'numberBetween(1,2)', '1234'],
             ['boolean', 'boolean()', 'true'],

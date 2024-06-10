@@ -4,7 +4,7 @@ namespace Daavelar\FakerJson;
 
 use Faker\Factory;
 
-class FakerGeneratorWrapper
+class FakerGeneratorWrapper implements FakerGeneratorWrapperContract
 {
     private $locale = 'pt_BR';
 

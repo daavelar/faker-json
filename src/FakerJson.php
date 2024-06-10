@@ -2,6 +2,8 @@
 
 namespace Daavelar\FakerJson;
 
+use InvalidArgumentException;
+
 class FakerJson
 {
     private $fake;
@@ -11,12 +13,7 @@ class FakerJson
         $this->fake = $fakerGenerator;
     }
 
-    public function generateFile(string $file): string
-    {
-        return $this->generate(file_get_contents($file));
-    }
-
-    public function generate(string $template): string
+    public function generate(string $template, FakerJsonFormat $format = FakerJsonFormat::ARRAY)
     {
         $decodedTemplate = json_decode($template, true);
 
@@ -32,7 +29,7 @@ class FakerJson
                 }
                 $item = $this->fake->randomFloat($args[0], $args[1], $args[2]);
             }
-            if(str($item)->startsWith('randomElement')) {
+            if (str($item)->startsWith('randomElement')) {
                 $args = explode(',', str_replace('randomElement(', '', str_replace(')', '', $item)));
 
                 $args = array_map('trim', $args);
@@ -54,6 +51,7 @@ class FakerJson
             if (str($item)->contains('()')) {
                 $method = str($item)->before('(')->toString();
                 $args = str($item)->between('(', ')')->toString();
+
                 if ($args == '') {
                     $item = $this->fake->$method();
                 } else {
@@ -61,8 +59,26 @@ class FakerJson
                     $item = $this->fake->$method($args);
                 }
             }
+
         });
 
-        return json_encode($decodedTemplate);
+        return $this->present($decodedTemplate, $format);
+    }
+
+    private function present(array $template, $format)
+    {
+        if ($format == FakerJsonFormat::JSON) {
+            return json_encode($template);
+        }
+
+        if ($format == FakerJsonFormat::PRETTY_JSON) {
+            return json_encode($template, JSON_PRETTY_PRINT);
+        }
+
+        if ($format == FakerJsonFormat::ARRAY) {
+            return $template;
+        }
+
+        throw new InvalidArgumentException('Invalid format');
     }
 }
