@@ -32,6 +32,7 @@ class FakerJsonTest extends TestCase
             ['uuid', 'uuid()', '1234'],
             ['randomElement', 'randomElement(1,2,3)', '2'],
             ['randomElement', 'randomElement(1, 2, 3)', '2'],
+            ['randomElement', 'randomElement(element1, element2)', 'element2'],
             ['lexify', 'lexify(????)', 'abcd'],
             ['numerify', 'numerify(####)', '1234'],
             ['randomDigit', 'randomDigit()', '2'],
