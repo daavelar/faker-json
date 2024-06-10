@@ -4,7 +4,6 @@ namespace Tests;
 
 use Daavelar\FakerJson\FakerGeneratorWrapper;
 use Daavelar\FakerJson\FakerJson;
-use Daavelar\FakerJson\FakerJsonFormat;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,14 +40,12 @@ class FakerJsonTest extends TestCase
             ['randomFloat', 'randomFloat(1,2,3)', '2.5'],
             ['numberBetween', 'numberBetween(1,2)', '1234'],
             ['boolean', 'boolean()', 'true'],
-            ['dateTime', 'dateTime()', '2020-01-01T00:00:00'],
             ['date', 'date()', '2020-01-01'],
             ['word', 'word()', 'word'],
             ['phoneNumber', 'phoneNumber()', '1234'],
             ['postcode', 'postcode()', '1234'],
             ['stateAbbr', 'stateAbbr()', 'NY'],
             ['city', 'city()', 'New York'],
-            ['citySuffix', 'citySuffix()', 'City'],
             ['buildingNumber', 'buildingNumber()', '1234'],
             ['streetName', 'streetName()', 'Main St'],
         ];

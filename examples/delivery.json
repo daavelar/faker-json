@@ -14,7 +14,7 @@
     "address": {
       "street": "streetName",
       "number": "buildingNumber",
-      "neighborhood": "citySuffix",
+      "neighborhood": "city",
       "city": "city",
       "state": "stateAbbr",
       "zipcode": "postcode"

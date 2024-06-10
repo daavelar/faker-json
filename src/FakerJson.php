@@ -18,6 +18,9 @@ class FakerJson
         $decodedTemplate = json_decode($template, true);
 
         array_walk_recursive($decodedTemplate, function (&$item) {
+            if (str($item)->startsWith('randomDigit')) {
+                $item = $this->fake->randomDigit();
+            }
             if (str($item)->startsWith('randomFloat')) {
                 $args = explode(',', str_replace('randomFloat(', '', str_replace(')', '', $item)));
                 if (count($args) == 1) {
@@ -31,9 +34,7 @@ class FakerJson
             }
             if (str($item)->startsWith('randomElement')) {
                 $args = explode(',', str_replace('randomElement(', '', str_replace(')', '', $item)));
-
                 $args = array_map('trim', $args);
-
                 $item = $this->fake->randomElement($args);
             }
             if (str($item)->startsWith('lexify')) {
@@ -48,18 +49,39 @@ class FakerJson
                 $args = explode(',', str_replace('numberBetween(', '', str_replace(')', '', $item)));
                 $item = $this->fake->numberBetween($args[0], $args[1]);
             }
-            if (str($item)->contains('()')) {
-                $method = str($item)->before('(')->toString();
-                $args = str($item)->between('(', ')')->toString();
-
-                if ($args == '') {
-                    $item = $this->fake->$method();
-                } else {
-                    $args = explode(',', $args);
-                    $item = $this->fake->$method($args);
-                }
+            if (str($item)->startsWith('date')) {
+                $item = $this->fake->date();
             }
-
+            if (str($item)->startsWith('dateTime')) {
+                $item = $this->fake->dateTime();
+            }
+            if (str($item)->startsWith('boolean')) {
+                $item = $this->fake->boolean();
+            }
+            if (str($item)->startsWith('uuid')) {
+                $item = $this->fake->uuid();
+            }
+            if (str($item)->startsWith('word')) {
+                $item = $this->fake->word();
+            }
+            if (str($item)->startsWith('phoneNumber')) {
+                $item = $this->fake->phoneNumber();
+            }
+            if (str($item)->startsWith('postcode')) {
+                $item = $this->fake->postcode();
+            }
+            if (str($item)->startsWith('stateAbbr')) {
+                $item = $this->fake->stateAbbr();
+            }
+            if (str($item)->startsWith('city')) {
+                $item = $this->fake->city();
+            }
+            if (str($item)->startsWith('buildingNumber')) {
+                $item = $this->fake->buildingNumber();
+            }
+            if (str($item)->startsWith('streetName')) {
+                $item = $this->fake->streetName();
+            }
         });
 
         return $this->present($decodedTemplate, $format);
